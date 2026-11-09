@@ -1799,3 +1799,8 @@ section[id] {
     white-space: nowrap;
   }
 }
+
+/* EU Headquarters photo: favour the town over the seafront */
+.sc-office--lisbon .sc-office__img {
+  background-position: 50% 38%;
+}
