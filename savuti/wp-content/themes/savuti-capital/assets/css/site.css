@@ -1852,3 +1852,51 @@ section[id] {
     transform: none;
   }
 }
+
+/* Hero: tall arched window (chosen 9 Nov 2026). The arch echoes the acacia canopy and rises from the figures row.
+   The photo breathes slowly and shifts a touch with the pointer. */
+.sc-hero--window .sc-hero__grid {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+}
+.sc-hero--window .sc-hero__media {
+  background: var(--paper);
+  overflow: visible;
+}
+.sc-hero--window .sc-hero__photo {
+  top: clamp(32px, 3.5vw, 48px);
+  bottom: 11px;
+  left: clamp(16px, 3vw, 48px);
+  outline: 1px solid var(--gold);
+  outline-offset: 10px;
+  border-radius: 999px 999px 0 0;
+  overflow: hidden;
+}
+.sc-hero--window .sc-hero__photo img {
+  object-position: 52% 60%;
+  animation: sc-breathe 26s ease-in-out infinite alternate;
+  will-change: transform;
+  transition: translate 0.6s ease-out;
+}
+@keyframes sc-breathe {
+  from { scale: 1.04; }
+  to { scale: 1.12; }
+}
+@media (max-width: 960px) {
+  .sc-hero--window .sc-hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sc-hero--window .sc-hero__media {
+    overflow: hidden;
+  }
+  .sc-hero--window .sc-hero__photo {
+    inset: 0;
+    outline: 0;
+    border-radius: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sc-hero--window .sc-hero__photo img {
+    animation: none;
+    transition: none;
+  }
+}

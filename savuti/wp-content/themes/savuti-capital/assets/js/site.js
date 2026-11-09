@@ -30,6 +30,20 @@
 	window.addEventListener('scroll', paint, { passive: true });
 	paint();
 
+	/* Hero window: the photo shifts slightly with the pointer, like looking through a window */
+	var hero = document.querySelector('.sc-hero--window');
+	var heroImg = hero && hero.querySelector('.sc-hero__photo img');
+	var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	if (hero && heroImg && !still) {
+		hero.addEventListener('pointermove', function (e) {
+			if (e.pointerType !== 'mouse') return;
+			var r = hero.getBoundingClientRect();
+			var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+			heroImg.style.translate = (x * -14).toFixed(1) + 'px ' + (y * -10).toFixed(1) + 'px';
+		});
+		hero.addEventListener('pointerleave', function () { heroImg.style.translate = ''; });
+	}
+
 	/* Testimonials: read full testimonial */
 	document.querySelectorAll('.sc-quote .sc-link-btn[aria-controls]').forEach(function (btn) {
 		btn.addEventListener('click', function () {
