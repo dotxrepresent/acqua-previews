@@ -1922,3 +1922,64 @@ section[id] {
   from { scale: 1.015; }
   to { scale: 1.04; }
 }
+
+/* Hero: fade behind the text (chosen 9 Nov 2026, Benoil style). The photo runs the full hero width with the
+   elephants to the right; a long, soft fade to white sits under the headline. Original crop, gentle breathing. */
+.sc-hero--fade .sc-hero__grid {
+  position: relative;
+}
+.sc-hero--fade .sc-hero__content {
+  position: relative;
+  z-index: 2;
+}
+.sc-hero--fade .sc-hero__media {
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+  overflow: hidden;
+}
+.sc-hero--fade .sc-hero__photo {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 34%;
+  outline: 0;
+  overflow: hidden;
+}
+.sc-hero--fade .sc-hero__photo img {
+  object-position: 50% 28%;
+  animation: sc-breathe-soft 24s ease-in-out infinite alternate;
+  will-change: transform;
+  transition: translate 0.6s ease-out;
+}
+.sc-hero--fade .sc-hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--paper) 0%, var(--paper) 33%, #ffffffd9 41%, #ffffff73 50%, #ffffff1f 58%, #fff0 66%),
+    linear-gradient(0deg, var(--paper) 0%, #fff0 14%),
+    linear-gradient(180deg, #ffffff66 0%, #fff0 10%);
+}
+@media (max-width: 960px) {
+  .sc-hero--fade .sc-hero__media {
+    position: relative;
+    inset: auto;
+  }
+  .sc-hero--fade .sc-hero__photo {
+    inset: 0;
+  }
+  .sc-hero--fade .sc-hero__photo img {
+    object-position: 52% 55%;
+  }
+  .sc-hero--fade .sc-hero__media::after {
+    background: linear-gradient(0deg, var(--paper) 0%, #fff0 22%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sc-hero--fade .sc-hero__photo img {
+    animation: none;
+    transition: none;
+  }
+}
