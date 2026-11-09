@@ -2057,3 +2057,10 @@ section[id] {
     linear-gradient(0deg, var(--paper) 0%, #ffffff8c 4%, #fff0 11%),
     linear-gradient(180deg, var(--paper) 0%, #fff0 4%);
 }
+
+/* Fade hero: completely still (9 Nov 2026) */
+.sc-hero--fade .sc-hero__photo img {
+  animation: none;
+  scale: 1;
+  will-change: auto;
+}
