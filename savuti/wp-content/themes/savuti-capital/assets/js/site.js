@@ -41,6 +41,21 @@
 		});
 	});
 
+	/* Pedigree: click or tap a mandate to keep it lifted; Enter or Space does the same from the keyboard */
+	document.querySelectorAll('.sc-mandates li').forEach(function (li) {
+		li.setAttribute('tabindex', '0');
+		li.setAttribute('aria-pressed', 'false');
+		function flip() {
+			var on = !li.classList.contains('is-open');
+			li.classList.toggle('is-open', on);
+			li.setAttribute('aria-pressed', String(on));
+		}
+		li.addEventListener('click', flip);
+		li.addEventListener('keydown', function (e) {
+			if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
+		});
+	});
+
 	/* Cookie preferences */
 	function consent() {
 		var m = document.cookie.match(/(?:^|; )sc_consent=(all|essential)/);

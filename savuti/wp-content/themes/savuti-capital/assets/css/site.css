@@ -1804,3 +1804,51 @@ section[id] {
 .sc-office--lisbon .sc-office__img {
   background-position: 50% 38%;
 }
+
+/* Pedigree: each mandate lifts into its own card on hover, and stays lifted when clicked or tapped.
+   The card is drawn behind the row, so nothing around it moves. */
+.sc-mandates li {
+  cursor: pointer;
+  isolation: isolate;
+  transition: color 0.2s ease, transform 0.25s ease;
+}
+.sc-mandates li:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 2px -14px;
+  background: var(--paper);
+  border-left: 2px solid var(--gold);
+  border-radius: 3px;
+  box-shadow: 0 10px 28px rgba(18, 35, 61, 0.12), 0 2px 6px rgba(18, 35, 61, 0.06);
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.sc-mandates li:hover,
+.sc-mandates li.is-open,
+.sc-mandates li:focus-visible {
+  color: var(--navy-900);
+  transform: translateY(-2px);
+  outline: none;
+  z-index: 2;
+}
+.sc-mandates li:hover:after,
+.sc-mandates li.is-open:after,
+.sc-mandates li:focus-visible:after {
+  opacity: 1;
+  transform: scale(1);
+}
+.sc-mandates li:focus-visible:after {
+  box-shadow: 0 0 0 2px var(--gold), 0 10px 28px rgba(18, 35, 61, 0.12);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sc-mandates li,
+  .sc-mandates li:after {
+    transition: none;
+  }
+  .sc-mandates li:hover,
+  .sc-mandates li.is-open {
+    transform: none;
+  }
+}
