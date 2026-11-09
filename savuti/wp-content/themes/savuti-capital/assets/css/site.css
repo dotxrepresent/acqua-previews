@@ -1900,3 +1900,19 @@ section[id] {
     transition: none;
   }
 }
+
+/* Hero: living frame (chosen 9 Nov 2026). The framed photo on white breathes slowly and shifts a touch with the pointer. */
+.sc-hero--living .sc-hero__photo {
+  overflow: hidden;
+}
+.sc-hero--living .sc-hero__photo img {
+  animation: sc-breathe 24s ease-in-out infinite alternate;
+  will-change: transform;
+  transition: translate 0.6s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sc-hero--living .sc-hero__photo img {
+    animation: none;
+    transition: none;
+  }
+}

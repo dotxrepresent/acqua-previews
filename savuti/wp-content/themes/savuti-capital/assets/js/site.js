@@ -30,8 +30,8 @@
 	window.addEventListener('scroll', paint, { passive: true });
 	paint();
 
-	/* Hero window: the photo shifts slightly with the pointer, like looking through a window */
-	var hero = document.querySelector('.sc-hero--window');
+	/* Hero: the photo shifts slightly with the pointer, like looking through a window */
+	var hero = document.querySelector('.sc-hero--living, .sc-hero--window');
 	var heroImg = hero && hero.querySelector('.sc-hero__photo img');
 	var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	if (hero && heroImg && !still) {
