@@ -39,7 +39,8 @@
 			if (e.pointerType !== 'mouse') return;
 			var r = hero.getBoundingClientRect();
 			var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-			heroImg.style.translate = (x * -14).toFixed(1) + 'px ' + (y * -10).toFixed(1) + 'px';
+			var k = hero.classList.contains('sc-hero--living') ? 0.5 : 1;
+			heroImg.style.translate = (x * -14 * k).toFixed(1) + 'px ' + (y * -10 * k).toFixed(1) + 'px';
 		});
 		hero.addEventListener('pointerleave', function () { heroImg.style.translate = ''; });
 	}

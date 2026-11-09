@@ -1906,7 +1906,7 @@ section[id] {
   overflow: hidden;
 }
 .sc-hero--living .sc-hero__photo img {
-  animation: sc-breathe 24s ease-in-out infinite alternate;
+  animation: sc-breathe-soft 24s ease-in-out infinite alternate;
   will-change: transform;
   transition: translate 0.6s ease-out;
 }
@@ -1915,4 +1915,10 @@ section[id] {
     animation: none;
     transition: none;
   }
+}
+
+/* Living frame keeps the original crop: only a 1 to 4% breathe, just enough room for the pointer shift */
+@keyframes sc-breathe-soft {
+  from { scale: 1.015; }
+  to { scale: 1.04; }
 }
