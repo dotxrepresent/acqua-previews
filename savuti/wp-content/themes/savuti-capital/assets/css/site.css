@@ -1983,3 +1983,63 @@ section[id] {
     transition: none;
   }
 }
+
+/* Fade hero, refined 9 Nov 2026: the whole photo shows (no crop), sits flush right, and only its left edge fades into
+   the white behind the headline. A slight lift in contrast and colour, and a short fade into the figures row. */
+.sc-hero--fade .sc-hero__photo {
+  left: auto;
+  width: auto;
+  aspect-ratio: 1680 / 1152;
+  max-width: 64%;
+}
+.sc-hero--fade .sc-hero__photo img {
+  object-fit: cover;
+  object-position: 50% 50%;
+  filter: contrast(1.03) saturate(1.04);
+}
+.sc-hero--fade .sc-hero__media::after {
+  background: none;
+}
+.sc-hero--fade .sc-hero__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--paper) 0%, #ffffffe6 6%, #ffffffa6 13%, #ffffff59 20%, #ffffff1a 27%, #fff0 33%),
+    linear-gradient(0deg, var(--paper) 0%, #ffffff80 4%, #fff0 10%);
+}
+@media (max-width: 960px) {
+  .sc-hero--fade .sc-hero__photo {
+    max-width: none;
+    width: 100%;
+    aspect-ratio: auto;
+  }
+  .sc-hero--fade .sc-hero__photo::after {
+    background: linear-gradient(0deg, var(--paper) 0%, #ffffff80 6%, #fff0 16%);
+  }
+}
+
+/* Fade hero balance: breathing room above and below the photo, right edge on the page margin, soft right edge */
+.sc-hero--fade .sc-hero__photo {
+  top: clamp(16px, 2vw, 28px);
+  bottom: clamp(24px, 2.6vw, 36px);
+  right: max(var(--gutter), calc((100vw - var(--max)) / 2));
+}
+.sc-hero--fade .sc-hero__photo::after {
+  background:
+    linear-gradient(90deg, var(--paper) 0%, #ffffffe6 6%, #ffffffa6 13%, #ffffff59 20%, #ffffff1a 27%, #fff0 33%),
+    linear-gradient(270deg, var(--paper) 0%, #ffffff66 3%, #fff0 8%),
+    linear-gradient(0deg, var(--paper) 0%, #ffffff80 5%, #fff0 12%),
+    linear-gradient(180deg, var(--paper) 0%, #fff0 6%);
+}
+@media (max-width: 960px) {
+  .sc-hero--fade .sc-hero__photo {
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .sc-hero--fade .sc-hero__photo::after {
+    background: linear-gradient(0deg, var(--paper) 0%, #ffffff80 6%, #fff0 16%);
+  }
+}
