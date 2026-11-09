@@ -2043,3 +2043,17 @@ section[id] {
     background: linear-gradient(0deg, var(--paper) 0%, #ffffff80 6%, #fff0 16%);
   }
 }
+
+/* Fade hero, final clean-up: the sky is now true white in the artwork, so only short fades are needed.
+   The left fade is shorter so the first elephant stays solid. No pointer movement. */
+.sc-hero--fade .sc-hero__photo img {
+  filter: none;
+  transition: none;
+}
+.sc-hero--fade .sc-hero__photo::after {
+  background:
+    linear-gradient(90deg, var(--paper) 0%, #ffffffb3 5%, #ffffff4d 11%, #fff0 18%),
+    linear-gradient(270deg, var(--paper) 0%, #ffffff99 4%, #ffffff33 8%, #fff0 12%),
+    linear-gradient(0deg, var(--paper) 0%, #ffffff8c 4%, #fff0 11%),
+    linear-gradient(180deg, var(--paper) 0%, #fff0 4%);
+}

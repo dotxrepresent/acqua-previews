@@ -31,7 +31,7 @@
 	paint();
 
 	/* Hero: the photo shifts slightly with the pointer, like looking through a window */
-	var hero = document.querySelector('.sc-hero--fade, .sc-hero--living, .sc-hero--window');
+	var hero = document.querySelector('.sc-hero--living, .sc-hero--window');
 	var heroImg = hero && hero.querySelector('.sc-hero__photo img');
 	var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	if (hero && heroImg && !still) {
