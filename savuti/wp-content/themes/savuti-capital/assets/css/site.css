@@ -2287,3 +2287,64 @@ section[id] {
     flex: none;
   }
 }
+
+/* Hero squares, refined 10 Nov 2026: a touch more compact so the right-hand pair finishes where the photo begins */
+.sc-figures.sc-figures--hero {
+  max-width: 384px;
+  gap: 10px;
+}
+.sc-figures--hero .sc-figure,
+.sc-figures--hero .sc-figure + .sc-figure,
+.sc-figures--hero .sc-figure:nth-child(n) {
+  padding: 14px 16px 16px;
+}
+.sc-figures--hero .sc-figure__label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.sc-figures--hero .sc-figure__value {
+  font-size: clamp(18px, 1.4vw, 20px);
+  white-space: nowrap;
+}
+/* The photo always starts clear of the squares; on narrower laptops it trims a little haze from its left edge */
+.sc-hero--fade .sc-hero__photo {
+  max-width: min(64%, calc(100% - 2 * max(var(--gutter), calc((100vw - var(--max)) / 2)) - 384px - 40px));
+  max-height: calc(100% - clamp(16px, 2vw, 28px) - clamp(24px, 2.6vw, 36px));
+  margin-block: auto;
+}
+.sc-hero--fade .sc-hero__photo img {
+  object-position: 100% 50%;
+}
+@media (max-width: 960px) {
+  .sc-figures.sc-figures--hero {
+    max-width: none;
+  }
+  .sc-hero--fade .sc-hero__photo {
+    max-width: none;
+  }
+  .sc-hero--fade .sc-hero__photo img {
+    object-position: 52% 55%;
+  }
+}
+
+/* Hero squares: the same gentle lift as the mandates, on hover only (they hold facts, not links, so nothing to click) */
+.sc-figures--hero .sc-figure {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+@media (hover: hover) {
+  .sc-figures--hero .sc-figure:hover {
+    transform: translateY(-2px);
+    border-color: #b4935a66;
+    border-top-color: var(--gold);
+    box-shadow: 0 10px 28px rgba(18, 35, 61, 0.1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sc-figures--hero .sc-figure {
+    transition: none;
+  }
+  .sc-figures--hero .sc-figure:hover {
+    transform: none;
+  }
+}
