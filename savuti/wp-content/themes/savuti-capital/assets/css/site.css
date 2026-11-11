@@ -2474,3 +2474,57 @@ section[id] {
     font-size: 14.5px;
   }
 }
+
+/* Leadership strip: click through to profiles (11 Nov 2026) */
+.sc-team-strip__item { position: relative; cursor: pointer; text-decoration: none; }
+.sc-team-strip__photo { position: relative; }
+.sc-team-strip__photo::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(18, 35, 61, .55), rgba(18, 35, 61, 0) 55%);
+  border-bottom: 2px solid var(--gold);
+  opacity: 0; transition: opacity .35s ease; z-index: 0;
+}
+.sc-team-strip a span.sc-team-strip__view {
+  position: absolute; right: 10px; bottom: 12px; z-index: 2;
+  width: 34px; height: 34px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--gold); color: #fff;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.sc-team-strip a span.sc-team-strip__cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 6px; color: var(--gold); font-size: 12px; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  justify-self: start; white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .sc-team-strip a span.sc-team-strip__cta { font-size: 11px; letter-spacing: .06em; margin-top: 4px; }
+}
+.sc-team-strip__cta svg { transition: transform .25s ease; }
+.sc-team-strip strong { transition: color .25s ease; }
+@media (hover: hover) {
+  .sc-team-strip__item:hover .sc-team-strip__photo::after,
+  .sc-team-strip__item:focus-visible .sc-team-strip__photo::after { opacity: 1; }
+  .sc-team-strip__item:hover .sc-team-strip__view,
+  .sc-team-strip__item:focus-visible .sc-team-strip__view { opacity: 1; transform: none; }
+  .sc-team-strip__item:hover img { filter: grayscale(.2) contrast(1.04); }
+  .sc-team-strip__item:hover strong { color: var(--gold); }
+  .sc-team-strip__item:hover .sc-team-strip__cta svg { transform: translateX(4px); }
+}
+.sc-team-strip__item:active .sc-team-strip__photo img { transform: scale(1.03); }
+.sc-team-strip__photo img { transition: transform .6s, filter .4s ease; }
+
+/* Leadership page: landing on a profile from the home strip */
+.sc-person[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
+.sc-person:target { animation: sc-person-flash 2.4s ease-out 1; }
+@keyframes sc-person-flash {
+  0%, 35% { background: rgba(180, 147, 90, .12); box-shadow: inset 3px 0 0 var(--gold); }
+  100% { background: transparent; box-shadow: inset 3px 0 0 transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sc-team-strip__view, .sc-team-strip__photo::after, .sc-team-strip__cta svg { transition: none; }
+  .sc-person:target { animation: none; box-shadow: inset 3px 0 0 var(--gold); }
+}
+/* Regulatory: entity names lead each paragraph in bold */
+.sc-regulatory__body strong, .sc-footer__legal strong { font-weight: 700; color: inherit; }
