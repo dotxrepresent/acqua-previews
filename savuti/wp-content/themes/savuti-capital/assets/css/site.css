@@ -2528,3 +2528,29 @@ section[id] {
 }
 /* Regulatory: entity names lead each paragraph in bold */
 .sc-regulatory__body strong, .sc-footer__legal strong { font-weight: 700; color: inherit; }
+
+/* Leadership: aggregate statement beside the heading, no large figure (12 Nov 2026) */
+.sc-head--split,
+.sc-pagehead__split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  align-items: end;
+  gap: 16px clamp(32px, 6vw, 96px);
+}
+.sc-head__note,
+.sc-pagehead__note {
+  border-left: 2px solid var(--gold);
+  padding-left: 22px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  max-width: 60ch;
+}
+.sc-head__note { color: var(--slate); }
+.sc-pagehead__note { color: rgba(255, 255, 255, .78); margin-bottom: 4px; }
+.sc-pagehead__split .sc-pagehead__title:after { margin-bottom: 0; }
+@media (max-width: 860px) {
+  .sc-head--split,
+  .sc-pagehead__split { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .sc-head__note,
+  .sc-pagehead__note { font-size: 14px; padding-left: 16px; }
+}
